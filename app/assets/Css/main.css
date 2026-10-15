@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+
+  --color-brand-bg: #0e1a13;
+  --color-brand-surface: #1a2e22;
+
+  --color-brand-blue: #2c4c38;
+  --color-brand-red: #9e3a3a;
+  --color-brand-green: #4a6b52;
+  --color-brand-yellow: #a99260;
+  --color-brand-purple: #5c5464;
+  --color-brand-cyan: #5a7d7a;
+  --color-brand-gray: #474f47;
+  --color-brand-border: rgb(255 255 255 / 0.1);
+}
+
+:root {
+  color-scheme: dark;
+
+  --ui-bg: var(--color-brand-bg);
+  --ui-bg-muted: #112218;
+  --ui-bg-elevated: var(--color-brand-surface);
+  --ui-bg-accented: #233d2e;
+
+  --ui-text-dimmed: #9ca3af;
+  --ui-text-muted: #d1d5db;
+  --ui-text-toned: #e5e7eb;
+  --ui-text: #ffffff;
+  --ui-text-highlighted: #ffffff;
+  --ui-text-inverted: #0e1a13;
+
+  --ui-border: var(--color-brand-border);
+  --ui-border-muted: rgb(255 255 255 / 0.05);
+  --ui-border-accented: rgb(255 255 255 / 0.2);
+
+  --ui-primary: var(--color-brand-green);
+
+  --ui-color-error-50: #fdf5f5;
+  --ui-color-error-100: #fbe8e8;
+  --ui-color-error-200: #f7d5d5;
+  --ui-color-error-300: #efa6a6;
+  --ui-color-error-400: #e06c6c;
+  --ui-color-error-500: #9e3a3a;
+  --ui-color-error-600: #872f2f;
+  --ui-color-error-700: #702525;
+  --ui-color-error-800: #591c1c;
+  --ui-color-error-900: #421212;
+  --ui-color-error-950: #2b0808;
+}
+
+@utility bg-brand-gradient {
+  background-color: var(--color-brand-bg);
+  background-image:
+    radial-gradient(circle at 20% 30%, rgb(74 107 82 / 0.15), transparent 50%),
+    radial-gradient(circle at 80% 20%, rgb(169 146 96 / 0.08), transparent 50%),
+    linear-gradient(180deg, #13241b 0%, var(--color-brand-bg) 100%);
+}

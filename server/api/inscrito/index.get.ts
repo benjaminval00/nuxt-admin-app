@@ -1,0 +1,6 @@
+export default defineEventHandler(async () => {
+    return await prisma.inscrito.findMany({
+        orderBy: [{ email: 'asc' }],
+        include:{evento: true}
+    })
+})
