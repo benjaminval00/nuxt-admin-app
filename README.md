@@ -1,40 +1,44 @@
 # SmartEvents – Student & Cultural Event Management Platform
 
-A full-stack web application designed to manage student and cultural activities, built with Nuxt 3, Vue.js, TypeScript, and Prisma ORM backed by MySQL.
+A full-stack, responsive web application designed for student and cultural activity discovery, attendee registration, and staff administrative oversight. Built with Nuxt 3, Vue.js, TypeScript, Nuxt UI, and Prisma ORM backed by MySQL.
 
 ---
 
 ## 🚀 Overview
 
-**SmartEvents** streamlines event discovery, registration, and administrative oversight within an academic community. The platform provides a dual-interface experience:
+**SmartEvents** streamlines event scheduling, registrations, and backoffice administration across academic and cultural environments:
 
 1. **Public Portal:**
-   - **Catalog & Discovery:** Dynamic listing of upcoming cultural and student activities displaying venue, schedules, current capacity, and pricing.
-   - **User Registrations ("Inscripciones"):** Direct event sign-up with real-time participant tracking and a dedicated view for users to check their enrolled activities.
+   - **Event Catalog:** Public directory displaying event details, schedules, venue, custom images, admission pricing, and live attendee counts.
+   - **Attendee Registration:** User enrollment form with input validation preventing duplicate registrations for the same activity.
+   - **Registration Lookup:** Email-based query tool allowing attendees to verify all events they are currently enrolled in.
+   - **Responsive Design:** Mobile-first layouts optimized for smartphones, tablets, and desktop displays.
 
-2. **Administrative Backoffice ("Admin"):**
-   - **Authentication:** Protected login gateway for authorized administrators.
-   - **Event Management (CRUD):** Complete lifecycle control (Create, Read, Update, Delete) over events, venues, and registration records.
+2. **Administrative Backoffice (Staff Portal):**
+   - **Role-Based Authentication:** Protected staff access with session handling, active profile status, and secure logout.
+   - **Staff Access Management:** Complete administrative CRUD to list, add, and revoke staff accounts.
+   - **Event Lifecycle Management:** Event creation and deletion, including local image uploads with fallback default assets.
+   - **Attendee Auditing:** Real-time participant tracking per event and granular registration cancellation.
 
 ---
 
 ## 🛠 Tech Stack
 
-- **Frontend & Routing:** [Nuxt 3](https://nuxt.com/) (Vue 3, Composition API)
+- **Framework:** [Nuxt 3](https://nuxt.com/) (Vue 3 Composition API, Nitro server engine)
 - **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **UI & Styling:** [Nuxt UI](https://ui.nuxt.com/) & Tailwind CSS (responsive layouts, `FileUpload` component)
 - **ORM & Data Persistence:** [Prisma ORM](https://www.prisma.io/) with [MySQL](https://www.mysql.com/)
-- **Server Layer:** Nuxt Server Engine (Nitro) handling internal API endpoints
-- **Styling:** Custom CSS / Scoped Styles (responsive card-based UI)
-- **Version Control:** Git & GitHub
+- **Validation & Business Logic:** Form input validation and relational integrity constraints
+- **Tooling:** Git, GitHub, Node.js
 
 ---
 
-## ✨ Key Architectural Highlights
+## 🏛 Database Schema & Architecture
 
-- **Server-Side API Endpoints (`server/`):** Implements secure server routes for authentication validation and CRUD database operations.
-- **Relational Data Modeling (`prisma/`):** Structured database schema modeling relationships between events, categories/venues, and user registrations.
-- **Type Safety:** Shared TypeScript interfaces connecting data payloads between frontend components and backend handlers.
-- **State & Navigation:** Reactive client-side navigation between event exploration, active user registrations, and administrative views.
+The application implements a normalized relational database schema managing three core entities:
+- **`Usuario` (Staff):** System credentials (`email`, `password`, `nombre`, `apellido`, `rol`) managing administrative privileges.
+- **`Evento`:** Event metadata (`titulo`, `fecha`, `lugar`, `imagen`, `valor`).
+- **`Inscrito`:** Enrollment records linking user details to event IDs (`FK eventoId`), enforcing unique participant constraints.
 
 ---
 
@@ -45,10 +49,9 @@ Follow these steps to run the project locally:
 ### 1. Prerequisites
 - [Node.js](https://nodejs.org/) (v18.x or later)
 - [npm](https://www.npmjs.com/) (or pnpm / yarn)
-- Running MySQL database instance
+- Local or remote MySQL instance
 
 ### 2. Clone & Install
-
 ```bash
 git clone [https://github.com/benjaminvall00/nuxt-admin-app.git](https://github.com/benjaminvall00/nuxt-admin-app.git)
 cd nuxt-admin-app
