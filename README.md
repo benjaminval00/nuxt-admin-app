@@ -53,3 +53,35 @@ Follow these steps to run the project locally:
 git clone [https://github.com/benjaminvall00/nuxt-admin-app.git](https://github.com/benjaminvall00/nuxt-admin-app.git)
 cd nuxt-admin-app
 npm install
+```
+
+### 3. Environment Configuration
+
+Create a `.env` file based on `.env.example`:
+
+```bash
+cp .env.example .env
+```
+
+Define your database connection string inside `.env`:
+```env
+DATABASE_URL="mysql://USER:PASSWORD@localhost:3306/smartevents_db"
+```
+
+### 4. Database Setup (Prisma)
+
+Generate the Prisma Client and synchronize database schema:
+
+```bash
+npx prisma generate
+npx prisma db push
+```
+
+### 5. Launch Development Server
+
+```bash
+npm run dev
+```
+
+The application will be accessible at [http://localhost:3000](http://localhost:3000).
+
